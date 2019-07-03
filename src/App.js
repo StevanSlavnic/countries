@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import * as container from './containers/indexContainers'
+import Layout from './components/Layout/Layout'
+// import './App.scss'
+
+class App extends Component {
+  render () {
+    const loadingApp = this.props.loadingApp
+
+    // public routes
+    let publicRoutes = [
+      { path: '/', exact: true, component: container.Countries }
+    ]
+
+    let routes = [...publicRoutes]
+
+    console.log(routes)
+
+    let redirection = <Redirect to={'/'} />
+
+    const appMarkup = (
+      <Layout>
+        <Switch>
+          {/* List all the routes user is able to access to */}
+          {routes.map((route, index) => (
+            // console.log(route)
+            <Route
+              path={route.path}
+              exact={route.exact}
+              component={route.component}
+              key={index}
+            />
+          ))}
+
+          {/* Redirect if some path is not undefined */}
+          {redirection}
+        </Switch>
+      </Layout>
+    )
+    return (
+      <React.Fragment>
+        {loadingApp ? (
+          <h1 style={{ padding: '20px' }}>Loading...</h1>
+        ) : (
+          appMarkup
+        )}
+      </React.Fragment>
+    )
+  }
 }
 
-export default App;
+export default withRouter(App)
