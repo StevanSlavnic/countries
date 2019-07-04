@@ -1,32 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { itemsFetchData } from '../../store/actions/countriesAction'
+import { countriesFetchData } from '../../store/actions/countriesAction'
 
-import api from '../../utils/apiConfig'
 
 class Countries extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            countries: ''
-         }
-    }
+  state = {}
 
     componentDidMount() {
-        this.props.fetchData(
-            `${api.API_ENDPOINT}`
-          )
-          console.log(this.props)
+      this.props.fetchData('https://restcountries.eu/rest/v2')
+      console.log(this.props)
     }
 
     render() { 
 
-        
+      const countries = this.props.countries.countries ? this.props.countries.countries : []
+      
+      console.log(countries)
 
-
-        return ( <div>
-            sasas
-        </div> );
+        return ( 
+          countries.map(country => <div key={country.alpha2Code}>
+            {country.name}
+          </div>)
+         );
     }
 }
  
@@ -39,7 +34,7 @@ const mapStateToProps = state => {
   
   const mapDispatchToProps = dispatch => {
     return {
-      fetchData: url => dispatch(itemsFetchData(url))
+      fetchData: url => dispatch(countriesFetchData(url))
     }
   }
   

@@ -16,8 +16,6 @@ class App extends Component {
 
     let routes = [...publicRoutes]
 
-    console.log(routes)
-
     let redirection = <Redirect to={'/'} />
 
     const appMarkup = (
