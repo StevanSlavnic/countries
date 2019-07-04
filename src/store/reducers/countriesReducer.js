@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 
-const setItems = (state, payload) => {
+const setCountries = (state, payload) => {
   const stateCopy = _.cloneDeep(state);
   stateCopy.countries = payload.countries;
   return stateCopy;
@@ -8,9 +8,10 @@ const setItems = (state, payload) => {
 
 const reducer = (state = {}, action) => {
   switch (action.type) {
-    case "ITEMS_FETCH_DATA_SUCCESS":
-      return setItems(state, action);
+    case "COUNTRIES_FETCH_DATA_SUCCESS":
+      return setCountries(state, action);
     default:
+      console.log("State",state)
       return state;
   }
 };

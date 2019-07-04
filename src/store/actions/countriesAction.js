@@ -16,10 +16,10 @@ export function countriesIsLoading(bool) {
     return dispatch => {
       dispatch(countriesIsLoading(true));
       fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
           dispatch(countriesIsLoading(false));
           return response;
         })

@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import Header from './Header/Header';
+import Header from './Header/Header';
 import classes from './Layout.module.scss';
 
 
@@ -8,7 +8,7 @@ import classes from './Layout.module.scss';
 function Layout(props) {
 	return (
 		<div className={classes.LayoutRoot}>
-			{/* <Header/> */}
+			<Header/>
 			<div className={classes.MainWrap}>
 				<main className={classes.Main}>{props.children}</main>
 			</div>

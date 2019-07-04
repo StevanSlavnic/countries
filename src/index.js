@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 
 import './index.css';
 import App from './App';
-import countriesReducer from './store/reducers/countriesReducers'
+import countriesReducer from './store/reducers/countriesReducer'
 import * as serviceWorker from './serviceWorker';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
