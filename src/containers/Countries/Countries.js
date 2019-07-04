@@ -19,7 +19,12 @@ class Countries extends Component {
 
         return ( 
           countries.map(country => <div key={country.alpha2Code}>
+            <div>
             {country.name}
+            </div>
+            <div>
+              <img src={country.flag} />
+            </div>
           </div>)
          );
     }
