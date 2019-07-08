@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { countriesFetchData } from '../../store/actions/countriesAction'
+import SingleCountry from '../SingleCountry/SingleCountry';
 
 
 class Countries extends Component {
@@ -18,14 +19,7 @@ class Countries extends Component {
       console.log(countries)
 
         return ( 
-          countries.map(country => <div key={country.alpha2Code}>
-            <div>
-            {country.name}
-            </div>
-            <div>
-              <img src={country.flag} />
-            </div>
-          </div>)
+          countries.map(country => <SingleCountry country={country}></SingleCountry>)
          );
     }
 }

@@ -1,19 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-//import { Test } from './Header.styles';
+
 
 const Header = (props) => (
   <div className="HeaderWrapper">
-    Header
+    <div>
+      <div>
+        <h1>Where in the wrold?</h1>
+      </div>
+      <div >
+        Dark mode
+      </div>
+    </div>
   </div>
 );
-
-Header.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Header.defaultProps = {
-  // bla: 'test',
-};
 
 export default Header;
