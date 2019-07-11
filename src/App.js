@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import React, { Component } from "react";
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
-import * as container from './containers/indexContainers'
-import Layout from './components/Layout/Layout'
+import * as container from "./containers/indexContainers";
+import Layout from "./components/Layout/Layout";
 // import './App.scss'
 
 class App extends Component {
-  render () {
-    const loadingApp = this.props.loadingApp
+  render() {
+    const loadingApp = this.props.loadingApp;
 
     // public routes
     let publicRoutes = [
-      { path: '/', exact: true, component: container.Countries }
-    ]
+      { path: "/", exact: true, component: container.Countries },
+      { path: "/country/:name", component: container.SingleCountry }
+    ];
 
-    let routes = [...publicRoutes]
+    let routes = [...publicRoutes];
 
-    let redirection = <Redirect to={'/'} />
+    let redirection = <Redirect to={"/"} />;
 
     const appMarkup = (
       <Layout>
@@ -36,17 +37,17 @@ class App extends Component {
           {redirection}
         </Switch>
       </Layout>
-    )
+    );
     return (
       <React.Fragment>
         {loadingApp ? (
-          <h1 style={{ padding: '20px' }}>Loading...</h1>
+          <h1 style={{ padding: "20px" }}>Loading...</h1>
         ) : (
           appMarkup
         )}
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default withRouter(App)
+export default withRouter(App);
