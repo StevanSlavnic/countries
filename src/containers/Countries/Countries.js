@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { countriesFetchData } from "../../store/actions/countriesAction";
 import TeaserCountry from "../TeaserCountry/TeaserCountry";
-import { Link, Route } from "react-router-dom";
-import { SingleCountry } from "../indexContainers";
 
 class Countries extends Component {
   state = {};
@@ -17,10 +15,14 @@ class Countries extends Component {
       ? this.props.countries.countries
       : [];
 
-    console.log(<TeaserCountry />);
+    console.log("Props", this.props);
 
     return countries.map(country => (
-      <TeaserCountry key={country.name} name={country.name}>
+      <TeaserCountry
+        key={country.name}
+        name={country.name}
+        color={this.props.style}
+      >
         {country}
       </TeaserCountry>
     ));

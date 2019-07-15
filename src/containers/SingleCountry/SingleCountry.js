@@ -76,6 +76,8 @@ class SingleCountry extends PureComponent {
           {country.languages &&
             country.languages.map(language => language.name).join(", ")}
         </div>
+
+        <div>{/* {.join(", ")} */}</div>
       </div>
     );
   }
