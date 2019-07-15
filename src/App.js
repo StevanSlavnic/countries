@@ -6,6 +6,19 @@ import Layout from "./components/Layout/Layout";
 // import './App.scss'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      changed: false
+    };
+  }
+
+  handleBackgroundChange = () => {
+    this.setState(state => ({
+      changed: !state.changed
+    }));
+  };
+
   render() {
     const loadingApp = this.props.loadingApp;
 
@@ -20,7 +33,11 @@ class App extends Component {
     let redirection = <Redirect to={"/"} />;
 
     const appMarkup = (
-      <Layout>
+      <Layout
+        style={{ backgroundColor: this.state.changed ? "#000" : "#fff" }}
+        backgroundColorChange={() => this.handleBackgroundChange()}
+        {...this.props}
+      >
         <Switch>
           {/* List all the routes user is able to access to */}
           {routes.map((route, index) => (
