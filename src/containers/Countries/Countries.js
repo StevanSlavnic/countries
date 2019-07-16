@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { countriesFetchData } from "../../store/actions/countriesAction";
 import TeaserCountry from "../TeaserCountry/TeaserCountry";
+import classes from "./Countries.module.scss";
 
 class Countries extends Component {
   state = {};
@@ -15,13 +16,11 @@ class Countries extends Component {
       ? this.props.countries.countries
       : [];
 
-    console.log("Props", this.props);
-
     return countries.map(country => (
       <TeaserCountry
         key={country.name}
         name={country.name}
-        color={this.props.style}
+        className={classes.TeaserCountry}
       >
         {country}
       </TeaserCountry>

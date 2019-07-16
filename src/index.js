@@ -5,11 +5,11 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import "./App.scss";
 import App from "./App";
 import countriesReducer from "./store/reducers/countriesReducer";
 import * as serviceWorker from "./serviceWorker";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// import "./index.css";
 
 const rootReducer = combineReducers({
   countries: countriesReducer

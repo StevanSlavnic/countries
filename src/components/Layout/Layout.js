@@ -1,15 +1,19 @@
 import React, { Component } from "react";
-
-import Header from "./Header/Header";
 import classes from "./Layout.module.scss";
-import { connect } from "react-redux";
 
 class Layout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // backgroundColor: ""
+    };
+  }
+
   render() {
     console.log(this.props);
 
     return (
-      <div className={classes.LayoutRoot} style={this.props.style}>
+      <div className={classes.LayoutRoot}>
         <div className="HeaderWrapper">
           <div>
             <div>
@@ -19,7 +23,7 @@ class Layout extends Component {
           </div>
         </div>
         <div className={classes.MainWrap}>
-          <main className={classes.Main}>{this.props.children}</main>
+          <main className={classes.Root}>{this.props.children}</main>
         </div>
       </div>
     );

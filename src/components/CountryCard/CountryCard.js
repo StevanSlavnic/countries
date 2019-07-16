@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
 import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/core/styles";
+import classes from "./CountryCard.module.scss";
 
 class CountryCard extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class CountryCard extends Component {
   }
 
   render() {
-    return <Card>{this.props.children}</Card>;
+    return <Card className={classes.CountryCard}>{this.props.children}</Card>;
   }
 }
 
