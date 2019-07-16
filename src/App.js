@@ -3,24 +3,18 @@ import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
 import * as container from "./containers/indexContainers";
 import Layout from "./components/Layout/Layout";
-// import './App.scss'
+import "./App.scss";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      changed: false
-    };
+    this.state = {};
   }
-
-  handleBackgroundChange = () => {
-    this.setState(state => ({
-      changed: !state.changed
-    }));
-  };
 
   render() {
     const loadingApp = this.props.loadingApp;
+
+    // console.log(this.props.styles.dark.backgroundColor);
 
     // public routes
     let publicRoutes = [
@@ -33,11 +27,7 @@ class App extends Component {
     let redirection = <Redirect to={"/"} />;
 
     const appMarkup = (
-      <Layout
-        style={{ backgroundColor: this.state.changed ? "#000" : "#fff" }}
-        backgroundColorChange={() => this.handleBackgroundChange()}
-        {...this.props}
-      >
+      <Layout>
         <Switch>
           {/* List all the routes user is able to access to */}
           {routes.map((route, index) => (

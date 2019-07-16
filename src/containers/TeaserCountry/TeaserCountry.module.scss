@@ -1,3 +1,26 @@
-CountryCard {
-  background-color: aqua;
+.CountryCard {
+  flex: 1 0 23%;
+  /* margin: 10px; */
+  padding: 20px;
+  max-width: 260px;
+}
+
+.CountryImage {
+  overflow: hidden;
+  height: 140px;
+  position: relative;
+  background-color: beige;
+
+  img {
+    width: 240px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.CountryInfo {
+  padding: 27px;
 }

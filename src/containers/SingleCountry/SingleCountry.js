@@ -1,9 +1,6 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import * as countryService from "../../services/countries/countriesService";
 import { Link } from "react-router-dom";
-
-import CountryCard from "../../components/CountryCard/CountryCard";
 
 class SingleCountry extends PureComponent {
   constructor(props) {
@@ -56,7 +53,7 @@ class SingleCountry extends PureComponent {
         </div>
 
         <div>
-          <img width={100} src={country.flag} />
+          <img width={100} src={country.flag} alt={country.name} />
         </div>
 
         <div>{country.nativeName}</div>

@@ -11,19 +11,19 @@ class TeaserCountry extends Component {
   render() {
     const country = this.props.children;
 
-    console.log("teaser", this.props.color);
-
     return (
-      <Link to={`/country/${country.name}`}>
+      <Link to={`/country/${country.name}`} className={classes.CountryCard}>
         <CountryCard>
-          <div key={country.alpha3Code} style={this.props.style}>
-            <div>
-              <img width="100" src={country.flag} />
+          <div key={country.alpha3Code}>
+            <div className={classes.CountryImage}>
+              <img width="100%" src={country.flag} alt={country.name} />
             </div>
-            <div>Name: {country.name}</div>
-            <div>Population: {country.population}</div>
-            <div>Region: {country.region}</div>
-            <div>Capital: {country.capital}</div>
+            <div className={classes.CountryInfo}>
+              <div>Name: {country.name}</div>
+              <div>Population: {country.population}</div>
+              <div>Region: {country.region}</div>
+              <div>Capital: {country.capital}</div>
+            </div>
           </div>
         </CountryCard>
       </Link>
