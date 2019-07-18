@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { countriesFetchData } from "./store/actions/countriesAction";
 
 import * as container from "./containers/indexContainers";
 import Layout from "./components/Layout/Layout";
@@ -8,13 +10,21 @@ import "./App.scss";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      countries: []
+    };
+  }
+
+  componentDidMount() {
+    this.props.fetchData("https://restcountries.eu/rest/v2");
+
+    console.log(this.props);
   }
 
   render() {
     const loadingApp = this.props.loadingApp;
 
-    // console.log(this.props.styles.dark.backgroundColor);
+    console.log();
 
     // public routes
     let publicRoutes = [
@@ -57,4 +67,20 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return {
+    countries: state.countries,
+    isLoading: state.countriesIsLoading
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchData: url => dispatch(countriesFetchData(url))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(App));

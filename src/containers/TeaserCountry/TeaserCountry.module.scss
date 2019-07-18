@@ -23,4 +23,22 @@
 
 .CountryInfo {
   padding: 27px;
+
+  .CountryName {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .CountryGenerals {
+    span {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  .CountryPopulation {
+    span {
+      font-weight: normal;
+    }
+  }
 }

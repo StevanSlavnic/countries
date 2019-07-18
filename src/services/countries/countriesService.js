@@ -1,13 +1,13 @@
 import axiosInstance from "../axiosDefaultInstance";
 
 export const getCountries = () => {
-  const url = "/";
+  const url = "/all";
 
   return axiosInstance.get(url);
 };
 
 export const getCountry = name => {
-  const url = `/name/${name}?fullText=true`;
+  const url = `/name/${name}`;
 
   return axiosInstance.get(url, name);
 };

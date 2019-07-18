@@ -11,7 +11,6 @@ const reducer = (state = {}, action) => {
     case "COUNTRIES_FETCH_DATA_SUCCESS":
       return setCountries(state, action);
     default:
-      console.log("State", state);
       return state;
   }
 };

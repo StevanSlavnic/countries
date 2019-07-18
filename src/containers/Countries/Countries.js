@@ -1,14 +1,20 @@
 import React, { Component } from "react";
+import _ from "lodash";
+import classes from "./Countries.module.scss";
+import * as countryService from "../../services/countries/countriesService";
 import { connect } from "react-redux";
 import { countriesFetchData } from "../../store/actions/countriesAction";
-import TeaserCountry from "../TeaserCountry/TeaserCountry";
-import classes from "./Countries.module.scss";
+
+import TeaserCountry from "../../containers/TeaserCountry/TeaserCountry";
+import CountryFilter from "../../components/CountryFilter/CountryFilter";
 
 class Countries extends Component {
-  state = {};
-
-  componentDidMount() {
-    this.props.fetchData("https://restcountries.eu/rest/v2");
+  constructor(props) {
+    super(props);
+    this.state = {
+      countries: []
+    };
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
@@ -16,32 +22,31 @@ class Countries extends Component {
       ? this.props.countries.countries
       : [];
 
-    return countries.map(country => (
-      <TeaserCountry
-        key={country.name}
-        name={country.name}
-        className={classes.TeaserCountry}
-      >
-        {country}
-      </TeaserCountry>
-    ));
+    return (
+      <React.Fragment>
+        <CountryFilter />
+        <div className={classes.Root}>
+          {countries.map(country => (
+            <TeaserCountry
+              key={country.name}
+              name={country.name}
+              className={classes.TeaserCountry}
+            >
+              {country}
+            </TeaserCountry>
+          ))}
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     countries: state.countries,
-    isLoading: state.countriesIsLoading
+    isLoading: state.countriesIsLoading,
+    name: state.countries.name
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchData: url => dispatch(countriesFetchData(url))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Countries);
+export default connect(mapStateToProps)(Countries);

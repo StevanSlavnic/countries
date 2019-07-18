@@ -1,3 +1,10 @@
+.Root {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1120px;
+  margin: auto;
+}
 .TeaserCountry {
   background-color: aqua;
 }
