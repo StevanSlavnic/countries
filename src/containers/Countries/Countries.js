@@ -18,6 +18,7 @@ class Countries extends Component {
   }
 
   render() {
+    // console.log(this.props);
     const countries = this.props.countries.countries
       ? this.props.countries.countries
       : [];
