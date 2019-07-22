@@ -6,8 +6,8 @@ export const getCountries = () => {
   return axiosInstance.get(url);
 };
 
-export const getCountry = name => {
-  const url = `/name/${name}`;
+// export const getCountry = name => {
+//   const url = `/name/${name}`;
 
-  return axiosInstance.get(url, name);
-};
+//   return axiosInstance.get(url, name);
+// };

@@ -17,14 +17,10 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchData("https://restcountries.eu/rest/v2");
-
-    console.log(this.props);
   }
 
   render() {
     const loadingApp = this.props.loadingApp;
-
-    console.log();
 
     // public routes
     let publicRoutes = [

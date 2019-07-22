@@ -4,7 +4,17 @@
   flex-wrap: wrap;
   max-width: 1120px;
   margin: auto;
+
+  // &:last-child {
+  //   justify-content: left;
+  // }
 }
-.TeaserCountry {
-  background-color: aqua;
+
+.countryFilters {
+  max-width: 1120px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

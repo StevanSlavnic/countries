@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import * as countryService from "../../services/countries/countriesService";
 import { Link } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 import { connect } from "react-redux";
 
@@ -51,7 +51,13 @@ class SingleCountry extends PureComponent {
         </div>
 
         <div>{country.nativeName}</div>
-        <div>{country.population}</div>
+        <div>
+          <NumberFormat
+            value={country.population}
+            displayType={"text"}
+            thousandSeparator={true}
+          />
+        </div>
         <div>{country.region}</div>
         <div>{country.subregion}</div>
         <div>{country.capital}</div>
