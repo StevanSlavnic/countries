@@ -5,25 +5,21 @@ class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // backgroundColor: ""
+      // countries: []
     };
   }
 
   render() {
-    console.log(this.props);
-
     return (
       <div className={classes.LayoutRoot}>
-        <div className="HeaderWrapper">
+        <div className={classes.HeaderWrapper}>
           <div>
-            <div>
-              <h1>Where in the world?</h1>
-            </div>
-            <div onClick={this.props.backgroundColorChange}>Dark mode</div>
+            <h1>Where in the world?</h1>
           </div>
+          <div onClick={this.props.backgroundColorChange}>Dark mode</div>
         </div>
         <div className={classes.MainWrap}>
-          <main className={classes.Root}>{this.props.children}</main>
+          <main>{this.props.children}</main>
         </div>
       </div>
     );

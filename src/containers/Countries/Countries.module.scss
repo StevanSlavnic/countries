@@ -1,3 +1,20 @@
-.TeaserCountry {
-  background-color: aqua;
+.Root {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1120px;
+  margin: auto;
+
+  // &:last-child {
+  //   justify-content: left;
+  // }
+}
+
+.countryFilters {
+  max-width: 1120px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

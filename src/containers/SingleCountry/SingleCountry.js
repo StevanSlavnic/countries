@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
-import * as countryService from "../../services/countries/countriesService";
 import { Link } from "react-router-dom";
+import NumberFormat from "react-number-format";
+
+import { connect } from "react-redux";
 
 class SingleCountry extends PureComponent {
   constructor(props) {
@@ -18,28 +20,20 @@ class SingleCountry extends PureComponent {
 
   componentDidMount = () => {
     console.log("SingleCountry mounted");
-    console.log(this.props);
+
     this.fetchCountry();
   };
 
   fetchCountry = () => {
     const name = this.props.match.params.name;
-
-    countryService
-      .getCountry(name)
-      .then(response => {
-        // console.log(response.data);
-        this.setState({ country: response.data });
-      })
-      .catch(error => {
-        this.setState({ hasError: true });
-        console.log(error);
-      });
+    const countries = this.props.countries.countries;
+    const country = countries.filter(country => country.name === name);
+    this.setState({
+      country: country
+    });
   };
 
   render() {
-    console.log("State", this.state.country[0].name);
-
     const country = this.state.country[0];
     console.log(country);
 
@@ -57,7 +51,13 @@ class SingleCountry extends PureComponent {
         </div>
 
         <div>{country.nativeName}</div>
-        <div>{country.population}</div>
+        <div>
+          <NumberFormat
+            value={country.population}
+            displayType={"text"}
+            thousandSeparator={true}
+          />
+        </div>
         <div>{country.region}</div>
         <div>{country.subregion}</div>
         <div>{country.capital}</div>
@@ -80,4 +80,11 @@ class SingleCountry extends PureComponent {
   }
 }
 
-export default SingleCountry;
+const mapStateToProps = state => {
+  return {
+    countries: state.countries,
+    isLoading: state.countriesIsLoading
+  };
+};
+
+export default connect(mapStateToProps)(SingleCountry);
